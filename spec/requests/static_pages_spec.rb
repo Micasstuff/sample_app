@@ -2,40 +2,47 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+	subject { page }
+
 	describe "Home page" do
-		it "should have the h1 'Home Page'" do
-			visit '/static_pages/home'
-			page.should have_selector('h1', :text => 'Home Page')
-		end
-		it "should have the base title" do
-			visit '/static_pages/home'
-			page.should have_selector('title', :text => "RoR Tuts")
-		end
-		it "should not have a custom page title" do
-			visit '/static_pages/home'
-			page.should_not have_selector('title', :text => '| Home')
-		end
+		before { visit root_path }
+		
+		it { should have_selector('h1', :text => 'Home Page') } 
+		it { should have_selector('title', text:  full_title('')) }
+		it { should_not have_selector('title', :text => '| Home') }
+		
 	end
 	
 	describe "Help page" do
-		it "should have the h1 'Help'" do
-			visit '/static_pages/help'
-			page.should have_selector('h1', :text => 'Help')
-		end
+		before { visit help_path }
+		it { should have_selector('h1', :text => 'Help') }  
+		it { should have_selector('title', text:  full_title('Help')) }
 	end
 
 	describe "About Us" do
-		it "should have the h1 'About Us'" do
-			visit '/static_pages/about'
-			page.should have_selector('h1', :text => 'About Us')
-		end
+		before{ visit about_path }
+		it { should have_selector('h1', :text => 'About Us')}
+		it { should have_selector('title', text:  full_title('About Us')) }
 	end
 	
 	describe "Contact Us" do
-		it "should have the h1 'Contact Us'" do
-			visit '/static_pages/contact'
-			page.should have_selector('h1', :text => 'Contact Us')
-		end
+		before { visit contact_path }
+		it { should have_selector('h1', :text => 'Contact Us')}
+		it { should have_selector('title', text:  full_title('Contact Us')) }
 	end
 
+    it "should have the right links on the layout" do
+	    visit root_path
+	    click_link "About"
+	    page.should have_selector 'title', text: full_title('About Us')
+	    click_link "Help"
+	    page.should have_selector 'title', text: full_title('Help')
+	    click_link "Contact Us"
+	    page.should have_selector 'title', text: full_title('Contact')
+	    click_link "SignIn  "
+	    click_link "Sign up now!"
+	    page.should have_selector 'title', text: full_title('Sign up')
+	    click_link "Home"
+	    page.should have_selector 'h1', text: 'Home'
+	end
 end
