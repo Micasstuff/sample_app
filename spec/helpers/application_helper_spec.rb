@@ -5,7 +5,7 @@ describe ApplicationHelper do
 	describe "full_title" do
 	
 		it "should include page title" do
-			full_title('foo').should =~ /foo/
+			full_title('titulo').should =~ /titulo/
 		end
 
 		it "should include base title" do
