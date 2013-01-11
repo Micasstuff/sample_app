@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe User do
-<<<<<<< HEAD
-  pending "add some examples to (or delete) #{__FILE__}"
-end
-=======
   
 	before do
 	 @user = User.new(name: "Mica", email: "mica@mica.com", password: "micael",
@@ -107,5 +103,3 @@ end
 
 	
 end
- 
->>>>>>> users

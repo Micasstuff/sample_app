@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-<<<<<<< HEAD
+
   attr_accessible :email, :name
-end
-=======
+
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
 
@@ -19,4 +18,3 @@ end
    validates :password_confirmation, presence: true
 end
  
->>>>>>> users
