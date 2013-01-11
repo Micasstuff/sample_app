@@ -1,11 +1,12 @@
 <div class="center hero-unit">
-	<h1>Home Page</h1>
+	<h1>Home Page 
+		<%= link_to image_tag("logo.png",  width: 180, class: "img-circle pull-right", alt: "Rails"), '#' %>	
+	</h1>
 	<p>
 		This is a simple home page from a RoR beginners project.
 	</p>
 
-
-	<%= link_to "Sign Up!", signup_path, class: "btn btn-large btn-primary" %>
+	<%= link_to "Sign Up!", signup_path, class: "btn btn-large btn-danger" %>
 </div>
 
 
